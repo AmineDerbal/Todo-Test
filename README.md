@@ -6,3 +6,5 @@ I imprort fake todo from JSON Placeholder  (https://jsonplaceholder.typicode.com
 and display the using the Vue as a frontend framework.
 
 the data imported are stored in the local Storage
+
+Hosting link : (https://kyu931.github.io/Todo-Test/)
