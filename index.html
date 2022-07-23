@@ -22,7 +22,7 @@
   <body>
     <h1>Todo api test</h1>
     <div id="app">
-      <button @click="getTodo">Import Todo</button>
+      <button @click="todos.getOne(todos.content[0].id + 1)" :disabled="todos.additionDisabled">Get one</button>
       <table class="table table-striped table-bordered border border-dark">
         <thead>
           <tr>
@@ -32,13 +32,13 @@
             <th scope="col">#</th>
           </tr>
         </thead>
-        <tbody v-if="todos.length > 0">
-          <tr v-for="(todo, index) in todos" :key="index">
-            <td>{{index}}</td>
+        <tbody v-if="todos.content.length > 0">
+          <tr v-for="todo in todos.content" :key="todo.id">
+            <td>{{todo.id}}</td>
             <td>{{todo.title}}</td>
             <td
               v-if="todo.completed === true"
-              @click="toggleTodoStatus(index)"
+              @click="todos.toggleStatus(todo.id)"
               class="completed"
               style="color: green"
             >
@@ -46,13 +46,13 @@
             </td>
             <td
               v-else
-              @click="toggleTodoStatus(index)"
+              @click="todos.toggleStatus(todo.id)"
               class="pending"
               style="color: red"
             >
               Pending
             </td>
-            <td @click="deleteTodo(index)"><i class="bi bi-trash"></i></td>
+            <td @click="todos.delete(todo.id)"><i class="bi bi-trash"></i></td>
           </tr>
         </tbody>
       </table>
